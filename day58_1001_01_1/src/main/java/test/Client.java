@@ -13,23 +13,27 @@ public class Client {
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		// 컨테이너를 구동시키는 코드
 		
-		Phone phone = (Phone)factory.getBean(args[0]);
-		// Bean == 자바객체 == 객체 == POJO
-		// 객체를 요청하다 == look up
-				
+		Phone phone = (Phone)factory.getBean("samsung");
+//		// Bean == 자바객체 == 객체 == POJO
+//		// 객체를 요청하다 == look up
+//				
 		phone.turnOn();
 		phone.turnOff();
-		
-		
-		Phone p1 = (Phone)factory.getBean("samsung");
-		Phone p2 = (Phone)factory.getBean("samsung");
-		Phone p3 = (Phone)factory.getBean("samsung");
-		/*Phone p1= new Samsung();
-		Phone p2=p1;
-		Phone p3 = p1;*/
-		p1.turnOn();
-		p2.turnOn();
-		p3.turnOn();
+////		
+////		
+////		Phone p1 = (Phone)factory.getBean("samsung");
+////		Phone p2 = (Phone)factory.getBean("samsung");
+////		Phone p3 = (Phone)factory.getBean("samsung");
+////		/*Phone p1= new Samsung();
+////		Phone p2=p1;
+////		Phone p3 = p1;*/
+////		p1.turnOn();
+////		p2.turnOn();
+////		p3.turnOn();
+//		//Watch watch = (Watch)factory.getBean("samsung");
+//		
+//		//watch.powerOn();
+//		//watch.powerOff();
 		factory.close();
 	}
 }

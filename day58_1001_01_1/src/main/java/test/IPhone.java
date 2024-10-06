@@ -1,25 +1,38 @@
 package test;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("apple")
 public class IPhone implements Phone {
-	private int num;
+	@Autowired // 메모리의 자료형(타입)을 인지해서 주입해줌
+	@Qualifier("aw")
+	private Watch watch; // 의존주입 DI 대상
 	
-	public IPhone() {
-		//this.num = 1234; //멤버변수 초기화 == 생성자의 역할
-		System.out.println("아이폰 객체 생성");
+	public IPhone() {	
+		System.out.println("아이폰 객체 생성 01");
 	}
-	
-	public void initMethod() {
-		this.num = 1234;
-		System.out.println("생성자 역할(멤버변수 초기화)을 대신하는 init() 함수");
-	}
-	
+//	public IPhone(Watch watch) {
+//		this.watch = watch;
+//		System.out.println("아이폰 객체 생성 02");
+//	}
+//	public IPhone(Watch watch, int num) {
+//		this.watch = watch;
+//		System.out.println("아이폰 객체 생성 02");
+//		System.out.println("num : "+this.num);
+//	}
+	// 아이폰은 워치에 대해 의존성을 갖는다	
+	// 객체를 멤버변수로 두면 유지보수 용이해짐
 	@Override
 	public void turnOn() {
-		System.out.println("아이폰 전원 ON");
+		//AppleWatch watch = new AppleWatch();
+		this.watch.powerOn();
 	}
-	
+
 	@Override
 	public void turnOff() {
-		System.out.println("아이폰 전원 OFF");
+		//AppleWatch watch = new AppleWatch();
+		this.watch.powerOff();
 	}
 }
